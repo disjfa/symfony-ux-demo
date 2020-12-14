@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New FierceChef{% endblock %}
+
+{% block body %}
+    <div class="container py-3">
+        <h1>Create new FierceChef</h1>
+        {{ include('fierce_chef/_form.html.twig') }}
+        <a href="{{ path('fierce_chef_index') }}">back to list</a>
+    </div>
+{% endblock %}

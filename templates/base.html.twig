@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+</head>
+<body data-controller="@symfony/ux-swup/swup" data-containers="#swup #nav">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id="nav">
+    <div class="container">
+        <a class="navbar-brand" href="#">Navbar</a>
+
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item{% if app.request.attributes.get('_route') == 'home' %} active{% endif %}">
+                <a class="nav-link" href="{{ path('home') }}">Home</a>
+            </li>
+            <li class="nav-item{% if app.request.attributes.get('_route') == 'fierce_chef_index' %} active{% endif %}">
+                <a class="nav-link" href="{{ path('fierce_chef_index') }}">Fierce chef</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div id="swup">
+    {% block body %}{% endblock %}
+</div>
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
+</body>
+</html>

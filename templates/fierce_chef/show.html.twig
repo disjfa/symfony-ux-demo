@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FierceChef{% endblock %}
+
+{% block body %}
+    <h1>FierceChef</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ fierce_chef.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ fierce_chef.name }}</td>
+            </tr>
+            <tr>
+                <th>Bio</th>
+                <td>{{ fierce_chef.bio }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{{ fierce_chef.created ? fierce_chef.created|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Updated</th>
+                <td>{{ fierce_chef.updated ? fierce_chef.updated|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('fierce_chef_index') }}">back to list</a>
+
+    <a href="{{ path('fierce_chef_edit', {'id': fierce_chef.id}) }}">edit</a>
+
+    {{ include('fierce_chef/_delete_form.html.twig') }}
+{% endblock %}

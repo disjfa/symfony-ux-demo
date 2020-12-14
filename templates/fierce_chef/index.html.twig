@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FierceChef index{% endblock %}
+
+{% block body %}
+    <div class="container py-3">
+        <h1>FierceChef index</h1>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Bio</th>
+                    <th>Updated</th>
+                    <th>actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for fierce_chef in fierce_chefs %}
+                    <tr>
+                        <td>{{ fierce_chef.name }}</td>
+                        <td>{{ fierce_chef.bio }}</td>
+                        <td>{{ fierce_chef.updated ? fierce_chef.updated|date('Y-m-d H:i:s') : '' }}</td>
+                        <td>
+                            <a href="{{ path('fierce_chef_show', {'id': fierce_chef.id}) }}">show</a>
+                            <a href="{{ path('fierce_chef_edit', {'id': fierce_chef.id}) }}">edit</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <a href="{{ path('fierce_chef_new') }}">Create new</a>
+    </div>
+{% endblock %}
